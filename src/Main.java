@@ -3,6 +3,7 @@ import fileanalyzer.merger.FileMerger;
 import fileanalyzer.model.FileReadData;
 import fileanalyzer.reader.DirectoryReader;
 import fileanalyzer.reader.FileReader;
+import fileanalyzer.util.TimeTracker;
 
 import java.io.File;
 import java.util.List;
@@ -22,6 +23,7 @@ public class Main {
             return;
         }
 
+        TimeTracker.start();
         //Read Sub Directories
         DirectoryReader.readSubDirectories(directoryPath);
         List<String> subdirectories = DirectoryReader.getSubDirectories();
@@ -53,5 +55,7 @@ public class Main {
 
         //Write each merged file in to a file named ‘merged file’ in particular directory
         FileMerger.mergeFiles(mergeFiles, directoryPath);
+        long TotalTime = TimeTracker.stop();
+        System.out.println("Time Taken For Whole Process : " + TotalTime);
     }
 }
