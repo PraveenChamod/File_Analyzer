@@ -1,4 +1,7 @@
+import fileanalyzer.reader.DirectoryReader;
+
 import java.io.File;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -12,5 +15,10 @@ public class Main {
             System.out.println("Invalid directory path.");
             return;
         }
+
+        //Read Sub Directories
+        DirectoryReader.readSubDirectories(directoryPath);
+        List<String> subdirectories = DirectoryReader.getSubDirectories();
+        DirectoryReader.printDirectories();
     }
 }
