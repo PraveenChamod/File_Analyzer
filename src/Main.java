@@ -41,5 +41,17 @@ public class Main {
 
         //Merge files in each directory and merge to one file in each directory
         FileMerger.mergeFilesInEachDirectory(filesReadData);
+
+        //Analyze character count, word count, file name and absolute path to file for each merged file
+        FileReader.readFiles(subdirectories);
+        ConcurrentHashMap<UUID, FileReadData> filesReadDataAfterMerge = FileReader.getAllFiles();
+        File[] mergeFiles = FileAnalyzer.extractFiles(filesReadDataAfterMerge, "merged_file.txt");
+        FileAnalyzer.analyzeFiles(mergeFiles);
+
+        //Print character count, word count, file name and absolute path to file for each merged file
+        FileAnalyzer.printAnalyzeFilesData();
+
+        //Write each merged file in to a file named ‘merged file’ in particular directory
+        FileMerger.mergeFiles(mergeFiles, directoryPath);
     }
 }
