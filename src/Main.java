@@ -1,4 +1,5 @@
 import fileanalyzer.analyzer.FileAnalyzer;
+import fileanalyzer.merger.FileMerger;
 import fileanalyzer.model.FileReadData;
 import fileanalyzer.reader.DirectoryReader;
 import fileanalyzer.reader.FileReader;
@@ -37,5 +38,8 @@ public class Main {
 
         //Print character count, word count , file name, absolute path to file
         FileAnalyzer.printAnalyzeFilesData();
+
+        //Merge files in each directory and merge to one file in each directory
+        FileMerger.mergeFilesInEachDirectory(filesReadData);
     }
 }
