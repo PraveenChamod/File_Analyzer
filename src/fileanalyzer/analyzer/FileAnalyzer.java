@@ -73,4 +73,17 @@ public class FileAnalyzer {
         fileAnalyzeData.setAnalyzeTime(analyzeTime);
         filesAnalyzeData.put(analyzeFileId, fileAnalyzeData);
     }
+
+    public static void printAnalyzeFilesData(){
+        System.out.println("\nAnalyze Data For Each File: ");
+        for (UUID key : filesAnalyzeData.keySet()) {
+            FileAnalyzeData fileAnalyzeData = filesAnalyzeData.get(key);
+            System.out.println();
+            System.out.println("File Name: " + fileAnalyzeData.getFileName());
+            System.out.println("File Path: " + fileAnalyzeData.getAbsolutePath());
+            System.out.println("Character Count: " + fileAnalyzeData.getCharacterCount());
+            System.out.println("Word Count: " + fileAnalyzeData.getWordCount());
+            System.out.println("Time Taken To Analyze File: " + fileAnalyzeData.getAnalyzeTime());
+        }
+    }
 }

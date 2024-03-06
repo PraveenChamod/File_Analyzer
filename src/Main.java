@@ -34,5 +34,8 @@ public class Main {
         //Analyze each file and extract character count and word counts separately
         File[] files = FileAnalyzer.extractFiles(filesReadData, "*");
         FileAnalyzer.analyzeFiles(files);
+
+        //Print character count, word count , file name, absolute path to file
+        FileAnalyzer.printAnalyzeFilesData();
     }
 }
