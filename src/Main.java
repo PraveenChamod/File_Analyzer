@@ -1,7 +1,11 @@
+import fileanalyzer.model.FileReadData;
 import fileanalyzer.reader.DirectoryReader;
+import fileanalyzer.reader.FileReader;
 
 import java.io.File;
 import java.util.List;
+import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class Main {
     public static void main(String[] args) {
@@ -20,5 +24,10 @@ public class Main {
         DirectoryReader.readSubDirectories(directoryPath);
         List<String> subdirectories = DirectoryReader.getSubDirectories();
         DirectoryReader.printDirectories();
+
+        //Reads the list of files in each subdirectory and print separately
+        FileReader.readFiles(subdirectories);
+        ConcurrentHashMap<UUID, FileReadData> filesReadData = FileReader.getAllFiles();
+        FileReader.printFiles();
     }
 }
