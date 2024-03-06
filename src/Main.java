@@ -1,3 +1,4 @@
+import fileanalyzer.analyzer.FileAnalyzer;
 import fileanalyzer.model.FileReadData;
 import fileanalyzer.reader.DirectoryReader;
 import fileanalyzer.reader.FileReader;
@@ -29,5 +30,9 @@ public class Main {
         FileReader.readFiles(subdirectories);
         ConcurrentHashMap<UUID, FileReadData> filesReadData = FileReader.getAllFiles();
         FileReader.printFiles();
+
+        //Analyze each file and extract character count and word counts separately
+        File[] files = FileAnalyzer.extractFiles(filesReadData, "*");
+        FileAnalyzer.analyzeFiles(files);
     }
 }
